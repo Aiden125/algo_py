@@ -6,33 +6,30 @@
 import sys
 input = sys.stdin.readline
 
-given = input()
+given = input().strip()
 
-maxV = ''
-minV = ''
-mCount = 0
+min_v = ''
+max_v = ''
+m_count = 0
 
-ten = 10
-for x in given:
-    if x == 'M':
-        mCount += 1
-    elif x == 'K' and mCount == 0:
-        maxV += '5'
-        minV += '5'
+for c in given:
+    if c == 'M':
+        m_count += 1
     else:
-        maxV += str(pow(ten, mCount - 1) * 50)
-        minV += str(pow(ten, mCount - 1)) + '5'
-        mCount = 0
+        if m_count == 0:
+            min_v += '5'
+            max_v += '5'
+        else:
+            min_v += str(10 ** (m_count - 1)) + '5'
+            max_v += str((10 ** (m_count - 1)) * 50)
+            m_count = 0
 
-if mCount != 0:
-    minV += str(pow(ten, mCount - 1))
-    for x in range(mCount):
-        maxV += '1'
+if m_count != 0:
+    min_v += str(10 ** (m_count - 1))
+    max_v += '1' * m_count
 
-print(maxV)
-print(minV)
-
-
+print(max_v)
+print(min_v)
 """
 보류
 """
