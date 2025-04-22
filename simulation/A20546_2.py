@@ -20,10 +20,13 @@ for i in range(0, len(arr)):
     elif pre_price != -1 and pre_price > x:
         down_count += 1
         up_count = 0
+    else:
+        down_count = 0
+        up_count = 0
     if down_count == 3:
         down_count = 0
         sm[1] += sm[0] // x
-        sm[1] = sm[0] % x
+        sm[0] = sm[0] % x
     if up_count == 3:
         up_count = 0
         sm[0] += (x * sm[1])
